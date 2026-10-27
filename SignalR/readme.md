@@ -84,6 +84,10 @@ The **name (string)** on both sides must match exactly. That is the only link be
 - CORS must allow the React origin (`http://localhost:3000`, with no trailing slash) and `AllowCredentials()`.
 - In browser DevTools, Network tab, filter **WS**, then the **Messages** tab shows every SignalR message going up and down.
 
+- To see the live connection: open DevTools, Network tab, click the **WS** filter, then join the chat. A row `chat?id=...` with status `101` is the WebSocket, and its Time stays **Pending** while it is open.
+- Click that row and open the **Messages** tab to see every message: up arrow = browser sent, down arrow = server sent. `type 1` is a method call, `type 3` is "call finished", `type 6` is a heartbeat ping.
+- A normal request (like `negotiate`) finishes quickly. A long-lived connection (WebSocket, SSE) stays Pending. Tick **Preserve log** or you may miss it after a page reload.
+
 ## How to run
 
 Backend:
