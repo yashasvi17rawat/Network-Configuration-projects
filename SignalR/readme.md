@@ -1,4 +1,5 @@
 # F1 Chat App (SignalR Learning Project)
+<img width="758" height="480" alt="image" src="https://github.com/user-attachments/assets/8b0aa771-cd12-43d1-ab4c-4376fb661de2" />
 
 A small real-time chat app I built to learn **SignalR**.
 Backend is **.NET**, frontend is **React**.
@@ -74,6 +75,9 @@ The **name (string)** on both sides must match exactly. That is the only link be
 5. Every browser in that room runs its `conn.on("RecieveSpecificMessage", ...)` handler.
 6. The handler adds the message to React state, and the screen updates.
 
+<img width="1276" height="645" alt="image" src="https://github.com/user-attachments/assets/22fa2533-d67c-4f82-990c-720d366358f6" />
+<img width="1289" height="865" alt="image" src="https://github.com/user-attachments/assets/3983364e-6fc4-4805-aa8f-b841c065ddfa" />
+
 ## Things I learned
 
 - Hub objects are short-lived, so shared data must live somewhere else (a singleton like `SharedDb`).
@@ -83,6 +87,8 @@ The **name (string)** on both sides must match exactly. That is the only link be
 - Both browser and server send small ping messages (heartbeat) to know the other side is still alive. If nothing is heard for about 30 seconds, the connection is closed.
 - CORS must allow the React origin (`http://localhost:3000`, with no trailing slash) and `AllowCredentials()`.
 - In browser DevTools, Network tab, filter **WS**, then the **Messages** tab shows every SignalR message going up and down.
+
+<img width="1675" height="635" alt="image" src="https://github.com/user-attachments/assets/3674f563-ffa7-44bb-a830-2053072017c0" />
 
 - To see the live connection: open DevTools, Network tab, click the **WS** filter, then join the chat. A row `chat?id=...` with status `101` is the WebSocket, and its Time stays **Pending** while it is open.
 - Click that row and open the **Messages** tab to see every message: up arrow = browser sent, down arrow = server sent. `type 1` is a method call, `type 3` is "call finished", `type 6` is a heartbeat ping.
